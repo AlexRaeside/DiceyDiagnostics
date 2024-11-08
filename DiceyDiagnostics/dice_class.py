@@ -14,7 +14,7 @@ class WeirdDice:
         self.d_set = [4,6,8,10,12,20]
         # select a dice
         if d is None:
-            self.d_pick = self.d_set[random.randint(0, len(self.d_set))]
+            self.d_pick = self.d_set[random.randint(0, (len(self.d_set) -1))]
         elif d not in self.d_set:
             raise Exception(f"{d} not in recognised dice set of {self.d_set}")
         else:
