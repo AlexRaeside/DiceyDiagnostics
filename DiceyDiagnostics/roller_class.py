@@ -3,10 +3,11 @@
 # outputs tables
 from logging import exception
 from traceback import print_tb
-
+import uuid
 from dice_class import WeirdDice
 import seaborn as sb
 import pandas as pd
+import datetime
 
 class RollerBot:
     def __init__(self, name=None, certainty_threshold=0.999, max_rolls=1000):
@@ -29,6 +30,9 @@ class RollerBot:
         self.roll_freq = {}
         self.prob_threshold = 0.999
         self.predicted_dice = None
+
+        self.uid = str(uuid.uuid4())
+        self.created_datetime = datetime.datetime.now()
 
     def add_dice(self, dice: WeirdDice):
         if type(dice) is not WeirdDice:
@@ -149,8 +153,6 @@ class RollerBot:
         prob_pd = prob_pd.rename(columns={'index': 'roll'})
 
         return  prob_pd
-
-
 
 
 
